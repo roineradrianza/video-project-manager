@@ -43,7 +43,7 @@
             <?= new Controller\Template('admin/parts/header') ?>
             <?php endif ?>
             <v-content class="bg-white" tag="main">
-                <v-container class="p" fluid>
+                <v-container class="py-0" fluid>
                     <?= $content; ?>
                 </v-container fluid>
             </v-content>
