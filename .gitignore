@@ -1,0 +1,32 @@
+### VisualStudioCode ###
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+# Local History for Visual Studio Code
+.history/
+#phpunit
+.phpunit.cache
+
+vendor/
+public/js/setup.js
+
+*.png
+*.jpg
+*.svg
+*.jpeg
+*.pdf
+
+config/global.php
+
+### VisualStudioCode Patch ###
+# Ignore all local history of files
+.history
+.ionide
+
+### SUBLIME TEXT ###
+*.sublime-project
+*.sublime-workspace
+.phpintel/

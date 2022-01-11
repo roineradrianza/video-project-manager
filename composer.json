@@ -1,0 +1,27 @@
+{
+    "name": "roiner/video-project-manager",
+    "description": "Video project manager",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "App\\": "/",
+            "Controller\\": "Controller/",
+            "Model\\": "Models/",
+            "Tests\\": "tests/"
+        },
+        "files": [
+            "Controller/functions.php",
+            "config/global.php"
+        ]
+    },
+    "authors": [
+        {
+            "name": "Roiner Adrianza",
+            "email": "roineradrianzap@gmail.com"
+        }
+    ],
+    "require": {
+        "defuse/php-encryption": "^2.2",
+        "php-ffmpeg/php-ffmpeg": "0.18.0"
+    }
+}
