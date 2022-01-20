@@ -1,35 +1,39 @@
 class Project {
     constructor() {
-        this.alert = true,
-            this.alert_type = '',
-            this.alert_message = '',
-            this.snackbar = false,
-            this.snackbar_timeout = 3000,
-            this.snackbar_text = '',
-            this.dialog = false,
-            this.delete_dialog = false,
-            this.loading = false,
-            this.form = true,
-            this.project = {
-                name: ''
-            },
-            this.default = {
-                name: ''
-            },
-            this.index = -1,
-            this.items = []
+        this.video = new ProjectVideo({})
+        this.alert = true
+        this.alert_type = ''
+        this.alert_message = ''
+        this.snackbar = false
+        this.snackbar_timeout = 3000
+        this.snackbar_text = ''
+        this.dialog = false,
+        this.show_dialog = false
+        this.loading = false
+        this.edit_loading = false
+        this.form = true,
+        this.endpoint = 'projects'
+        this.project = {
+            name: ''
+        }
+        this.default = {
+            name: ''
+        }
+        this.index = -1
+        this.items = []
     }
 
     reset() {
         this.loading = false
         this.alert = false
         this.project = Object.assign({}, this.default)
+        this.video.reset()
         this.index = -1
     }
 
     load() {
         let app = this
-        let url = api_url + 'projects/get/'
+        let url = api_url + `${app.endpoint}/get/`
         app.loading = true
         app.items = []
         Http.get(url).then(res => {
@@ -46,7 +50,7 @@ class Project {
         let app = this
         app.loading = true
         if (app.index >= 0) {
-            let url = api_url + 'projects/update'
+            let url = api_url + `${app.endpoint}/update`
             Http.put(url, app.project).then(res => {
                 app.response(res.status, res.message)
                 if (res.status == 'success') {
@@ -59,7 +63,7 @@ class Project {
             })
         }
         else {
-            let url = api_url + 'projects/create'
+            let url = api_url + `${app.endpoint}/create`
             Http.post(url, app.project).then(res => {
                 app.response(res.status, res.message)
                 if (res.status == 'success') {
@@ -72,6 +76,13 @@ class Project {
                 app.response('error')
             })
         }
+    }
+
+    showItem(item) {
+        this.index = this.items.indexOf(item)
+        this.video = new ProjectVideo({project_id: item.project_id})
+        this.project = Object.assign({}, item)
+        this.show_dialog = true
     }
 
     editItem(item) {
@@ -89,7 +100,7 @@ class Project {
     delete() {
         let app = this
         app.loading = true
-        let url = api_url + 'projects/delete/' + app.project.project_id
+        let url = api_url + `${app.endpoint}/delete/${app.project.project_id}`
         Http.delete(url).then(res => {
             app.response(res.status, res.message)
             if (res.status == 'success') {

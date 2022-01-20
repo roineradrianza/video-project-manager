@@ -10,6 +10,14 @@
                     ]
                 )
                 ?>
+                <?=new Controller\Template('components/snackbar',
+                    [
+                        'snackbar' => 'projects.video.snackbar',
+                        'snackbar_timeout' => 'projects.video.snackbar_timeout',
+                        'snackbar_text' => 'projects.video.snackbar_text'
+                    ]
+                )
+                ?>
                 <h2>Proyectos</h2>
                 <v-row class="mt-6">
                     <v-col cols="12">
@@ -18,10 +26,16 @@
                                 <v-toolbar flat>
                                     <v-spacer></v-spacer>
                                     <?=new Controller\Template('admin/partials/projects/dialog')?>
+                                    <?=new Controller\Template('admin/partials/projects/show_dialog')?>
                                     <?=new Controller\Template('admin/partials/projects/delete_dialog')?>
+                                    <?=new Controller\Template('admin/partials/video/delete_dialog')?>
+                                    <?=new Controller\Template('admin/partials/video/edit_dialog')?>
                                 </v-toolbar>
                             </template>
                             <template #item.actions="{ item }">
+                                <v-icon md @click="projects.showItem(item)" color="primary">
+                                    mdi-eye
+                                </v-icon>
                                 <v-icon md @click="projects.editItem(item)" color="#00BFA5">
                                     mdi-pencil
                                 </v-icon>

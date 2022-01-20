@@ -1,4 +1,4 @@
-<v-dialog v-model="projects.dialog" max-width="600px">
+<v-dialog v-model="projects.dialog" max-width="600px" @click:outside="projects.reset(); projects.delete_dialog = false">
     <template #activator="{ on, attrs }">
         <v-btn color="secondary" dark rounded class="mb-2" v-bind="attrs" v-on="on">
             <v-icon>mdi-plus</v-icon>
@@ -10,7 +10,7 @@
             <v-toolbar-title>{{ formTitle }}</v-toolbar-title>
             <v-spacer></v-spacer>
             <v-toolbar-items>
-                <v-btn icon @click="projects.dialog = false">
+                <v-btn icon @click="projects.reset(); projects.delete_dialog = false">
                     <v-icon color="grey">mdi-close</v-icon>
                 </v-btn>
             </v-toolbar-items>
@@ -32,7 +32,7 @@
 
         <v-card-actions class="px-8">
             <v-spacer></v-spacer>
-            <v-btn color="secondary white--text" block @click="projects.save()" :disabled="projects.project.name == ''">
+            <v-btn color="primary" block @click="projects.save()" :disabled="projects.project.name == ''">
                 Guardar
             </v-btn>
         </v-card-actions>

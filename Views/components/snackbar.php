@@ -4,7 +4,7 @@
           {{ <?= !empty($snackbar_text) ? $snackbar_text : 'snackbar_text' ?> }}
 
           <template #action="{ attrs }">
-              <v-btn text v-bind="attrs" @click="snackbar = false" dark>
+              <v-btn text v-bind="attrs" @click="<?= !empty($snackbar) ? $snackbar : 'snackbar' ?> = false" dark>
                   Cerrar
               </v-btn>
           </template>

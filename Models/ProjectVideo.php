@@ -4,21 +4,23 @@ namespace Model;
 use Model\Helper\DB;
 
 /**
- * Project Model
+ * Project Video Model
  */
 
-class Project extends DB
+class ProjectVideo extends DB
 {
-    private $table = "projects";
-    private $id_column = "project_id";
+    private $table = "project_videos";
+    private $id_column = "project_video_id";
+    private $id_project_column = "project_id";
 
-    public function get($id = 0, $columns = []) : Array
+    public function get($id = 0, $project_id = 0) : Array
     {
-        $columns = empty($columns) ? '*' : implode(',', $columns);
-        if ($id != 0) {
-            $sql = "SELECT ${columns} FROM {$this->table} WHERE {$this->id_column} = $id";
+        if (!empty($project_id)) {
+            $sql = "SELECT * FROM {$this->table} WHERE {$this->id_project_column} = $project_id";
+        } elseif (!empty($id)) {
+            $sql = "SELECT * FROM {$this->table} WHERE {$this->id_column} = $id";
         } else {
-            $sql = "SELECT ${columns} FROM {$this->table}";
+            $sql = "SELECT * FROM {$this->table}";
         }
         $result = $this->execute_query($sql);
         $arr = [];
@@ -35,7 +37,8 @@ class Project extends DB
         }
 
         extract($data);
-        $sql = "INSERT INTO {$this->table} (name) VALUES('$name')";
+
+        $sql = "INSERT INTO {$this->table} (name, src, project_id) VALUES('$name', '$src', $project_id)";
         $result = $this->execute_query_return_id($sql);
         return $result;
     }

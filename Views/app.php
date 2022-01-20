@@ -12,6 +12,9 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
         rel="stylesheet">
+    <link href="https://vjs.zencdn.net/7.17.0/video-js.css" rel="stylesheet" />
+    <link href="https://unpkg.com/@silvermine/videojs-quality-selector/dist/css/quality-selector.css" rel="stylesheet">
+    <link href="<?= SITE_URL ?>/assets/js/lib/videojs/panorama/videojs-panorama.min.css" rel="stylesheet">
     <link href="<?= SITE_URL ?>/css/material-design-icons.min.css" rel="stylesheet">
     <link href="<?= SITE_URL ?>/css/vuetify.min.css" rel="stylesheet">
     <link href="<?= SITE_URL ?>/css/app.min.css" rel="stylesheet">
@@ -42,11 +45,11 @@
             <?php if ($data['admin_header']) : ?>
             <?= new Controller\Template('admin/parts/header') ?>
             <?php endif ?>
-            <v-content class="bg-white" tag="main">
+            <v-main class="bg-white" tag="main">
                 <v-container class="py-0" fluid>
                     <?= $content; ?>
                 </v-container fluid>
-            </v-content>
+            </v-main>
             <?php if ($data['footer']): ?>
             <?= new Controller\Template('parts/footer') ?>
             <?php endif ?>
@@ -62,6 +65,10 @@
 
     <script src="<?= SITE_URL ?>/js/components/vuetify.min.js?v=1.0.0"></script>
     <script src="<?= SITE_URL ?>/js/components/vue-resource.min.js"></script>
+    <script src="https://vjs.zencdn.net/7.17.0/video.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r76/three.js"></script>
+    <script src="https://unpkg.com/@silvermine/videojs-quality-selector/dist/js/silvermine-videojs-quality-selector.min.js"></script>
+    <script src="<?= SITE_URL ?>/assets/js/lib/videojs/panorama/videojs-panorama.v5.min.js"></script>
     <script src="<?= SITE_URL ?>/js/Classes/Http.min.js"></script>
     <script src="<?= SITE_URL ?>/js/theme.js"></script>
     <script src="<?= SITE_URL ?>/js/setup.js"></script>

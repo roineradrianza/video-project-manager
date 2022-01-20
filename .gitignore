@@ -18,6 +18,7 @@ public/js/setup.js
 *.svg
 *.jpeg
 *.pdf
+*.mp4
 
 config/global.php
 

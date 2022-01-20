@@ -9,8 +9,10 @@ class Admin extends Controller\Routes
     {
         $this->styles = [['name' => 'admin/dashboard.min']];
         $this->scripts = [
-            ['name' => 'Classes/Project.min'],
-            ['name' => 'admin/projects.min']
+            ['name' => 'lib/vue-clipboard.min', 'version' => '1.0.1'],
+            ['name' => 'Classes/ProjectVideo.min', 'version' => '1.0.1'],
+            ['name' => 'Classes/Project.min', 'version' => '1.0.1'],
+            ['name' => 'admin/projects.min', 'version' => '1.0.1']
         ];
         $this->content = new Template("admin/projects");
         $this->title = 'Administración - Dashboard';

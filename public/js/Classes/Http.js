@@ -5,17 +5,19 @@ const Http = {
     },
 
     post(url, data) {
+        let headers = {}
+        if (!data instanceof FormData) {
+            headers["Content-Type"] = 'application/json'
+        }
         let response = fetch(url,
             {
                 method: 'POST',
                 mode: 'cors',
                 cache: 'no-cache',
                 credentials: 'same-origin',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
+                headers: headers,
                 referrerPolicy: 'no-referrer',
-                body: JSON.stringify(data)
+                body: data instanceof FormData ? data : JSON.stringify(data)
             }
         ).then(response => {
             return response.json()
@@ -24,17 +26,19 @@ const Http = {
     },
 
     put(url, data) {
+        let headers = {}
+        if (!data instanceof FormData) {
+            headers["Content-Type"] = 'application/json'
+        }
         let response = fetch(url,
             {
                 method: 'PUT',
                 mode: 'cors',
                 cache: 'no-cache',
                 credentials: 'same-origin',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
+                headers: headers,
                 referrerPolicy: 'no-referrer',
-                body: JSON.stringify(data)
+                body: data instanceof FormData ? data : JSON.stringify(data)
             }
         ).then(response => {
             return response.json()
@@ -43,17 +47,19 @@ const Http = {
     },
 
     delete(url, data) {
+        let headers = {}
+        if (!data instanceof FormData) {
+            headers["Content-Type"] = 'application/json'
+        }
         let response = fetch(url,
             {
                 method: 'DELETE',
                 mode: 'cors',
                 cache: 'no-cache',
                 credentials: 'same-origin',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
+                headers: headers,
                 referrerPolicy: 'no-referrer',
-                body: JSON.stringify(data)
+                body: data instanceof FormData ? data : JSON.stringify(data)
             }
         ).then(response => {
             return response.json()

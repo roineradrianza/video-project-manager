@@ -19,6 +19,7 @@ class Routes
 
     public function __construct($render = false)
     {
+        $this->is_logged = !empty($_SESSION['user_id']);
         $render ? $this->init() : '';
     }
 
@@ -123,7 +124,13 @@ class Routes
             exit();
         }
     }
-    public function render()
+    
+    public function is_user_type($user_type = 'administrador') : Bool
+    {
+        return $_SESSION['user_type'] == $user_type;
+    }
+
+    public function render() : Void
     {
         $view = new Template("app", [
             "title" => $this->title,

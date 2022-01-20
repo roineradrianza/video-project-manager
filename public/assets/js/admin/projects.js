@@ -1,3 +1,7 @@
+
+VueClipboard.config.autoSetContainer = true // add this line
+Vue.use(VueClipboard)
+video
 /*VUE INSTANCE*/
 let vm = new Vue({
   vuetify,
@@ -19,6 +23,7 @@ let vm = new Vue({
       { text: 'Acciones', value: 'actions', align: 'center', sortable: false },
     ],
     projects: new Project,
+    video_project: new ProjectVideo({project_id: null}),
   },
 
   computed: {
@@ -32,6 +37,5 @@ let vm = new Vue({
   },
 
   methods: {
-
   }
 });

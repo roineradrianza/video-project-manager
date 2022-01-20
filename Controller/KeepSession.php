@@ -21,7 +21,6 @@ class KeepSession
                     $_SESSION['first_name'] = $result->first_name;
                     $_SESSION['last_name'] = $result->last_name;
                     $_SESSION['email'] = $result->email;
-                    $_SESSION['birthdate'] = $result->birthdate;
                     $_SESSION['user_type'] = $result->user_type;
                     $_SESSION['redirect_url'] = SITE_URL . '/admin/';
                 } else {
